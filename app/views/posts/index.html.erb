@@ -1,0 +1,23 @@
+<h1>Posts#index</h1>
+
+<%= link_to "Add New Post",new_post_path(user_id:current_user.id) %>
+<table border =1 >
+	<tr>
+		<th>Posts_Title</th>
+		<th>Posts_Description</th>
+		<th>Edit</th>
+	    <th>Delete</th>
+    </tr>
+
+       <%@posts.each do |var|%>
+	
+	
+	<tr>
+	   <td><%=var.title%></td>
+	   <td><%=var.description%></td>
+	   <td><%= link_to "Edit",edit_post_path(var.id)%></td>
+	   <td><%= link_to 'delete',post_path(var),method: :delete,
+	    data: { confirm:"are you sure" } %></td>
+	</tr>
+	  <%end%>
+</table>
